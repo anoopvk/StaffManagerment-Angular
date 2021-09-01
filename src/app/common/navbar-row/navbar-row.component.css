@@ -1,0 +1,59 @@
+
+
+.leftNavbarRow {
+    height: 50px;
+    display: flex;
+}
+
+.blankBoxMenuContainer {
+    /* margin-top: auto; */
+    /* margin-left: 10px; */
+    margin-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.blankBoxMenu {
+    width: 30px;
+    height: 30px;
+    margin: 5px;
+}
+
+.boxColor6 {
+    background-color: white;
+}
+
+.leftNavbarRowTitle {
+    margin-left: 10px;
+    margin-right: 10px;
+    line-height: 50px;
+    display: flex;
+    align-items: center;
+}
+
+.selectStaffTypeToDisplay {
+    /* width: 0px; */
+    /* align-items: center; */
+    margin: 5px;
+    height: 30px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: larger;
+    /* border: 2px solid rgb(255, 255, 255); */
+    /* box-shadow: 0 0 5px 1px rgb(255, 255, 255); */
+    /* min-width: 200px; */
+    background-color: rgb(224, 224, 224);
+}
+
+.selectStaffTypeToDisplay:focus {
+    /* border: 5px solid tomato; */
+    outline: none;
+}
+.selectStaffTypeToDisplay:hover{
+    background-color: rgb(216, 216, 216);
+}
+a{
+    color: aliceblue;
+}
+a div:hover{
+    background-color: rgb(0, 114, 114);
+}

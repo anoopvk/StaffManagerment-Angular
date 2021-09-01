@@ -1,1 +1,51 @@
 /* You can add global styles to this file, and also import other style files */
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.contentText {
+    margin: 2px;
+    margin-top: 20px;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border:rgba(235, 235, 235, 255);
+    margin: 5px;
+}
+
+.table td, .table th {
+    padding: 5px;
+    /* border: none; */
+}
+
+.table tr {
+    background-color: rgba(242, 242, 242, 255);
+}
+
+.table tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 255);
+}
+
+label {
+    display: inline-block;
+    width: 150px;
+}
+
+#myTable {
+    text-align: center;
+    min-width: 750px;
+}
+
+button{
+    min-height: 30px;
+    min-width: 50px;
+    margin: 5px;
+    font-weight: 600;
+
+}

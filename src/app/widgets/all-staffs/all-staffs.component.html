@@ -1,0 +1,30 @@
+<div class="tableContainer">
+
+    <table id="myTable" border="1px" class="table">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>staffType</th>
+            <th>section</th>
+            <th>subjectHandled</th>
+            <th>building</th>
+            <th>-</th>
+
+        </tr>
+        <tr *ngFor="let staff of staffs">
+       
+            <ng-container (click)="showUpdateForm(staff)">
+                <td (click)="showUpdateForm(staff)">{{staff.id}} </td>
+                <td (click)="showUpdateForm(staff)">{{staff.name}} </td>
+                <td (click)="showUpdateForm(staff)">{{staffTypeEnum[(staff.staffType)]}}</td>
+                <td (click)="showUpdateForm(staff)">{{staff.section}}</td>
+                <td (click)="showUpdateForm(staff)">{{staff.subjectHandled}} </td>
+                <td (click)="showUpdateForm(staff)">{{staff.building}}</td>
+            </ng-container>
+            <!-- <td><app-delete-staff-btn id={{(staff.id)}} ></app-delete-staff-btn> </td> -->
+            <td><button (click)="handleDeleteBtnClick(staff.id)">Delete</button></td>
+            <td><input type="checkbox" (click)="staffSelectionService.toggleSelected(staff.id)"></td>
+
+        </tr>
+    </table>
+</div>

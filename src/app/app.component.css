@@ -1,0 +1,17 @@
+.contentContainer {
+    flex: 7;
+    /* background-color: rgb(255, 230, 0); */
+    width: 100%;
+    display: flex;
+}
+.content {
+    flex: 75%;
+    margin: 10px;
+}
+
+.leftNavbar {
+    flex: 25%;
+    background-color: rgba(61, 62, 93, 255);
+    color: white;
+    /* height: 100%; */
+}

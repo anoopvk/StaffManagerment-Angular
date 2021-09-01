@@ -1,0 +1,50 @@
+<div id="StaffFormContainer" class="popUpContainer">
+    <div class="popUpContent">
+        <!-- {{isAdministrativeStaff()}} -->
+        <!-- {{staff.id}}<br>
+        {{staff.name}}<br>
+        staff.staffType{{staff.staffType}}<br>
+        {{staff.section}}<br>
+        {{staff.subjectHandled}}<br>
+        {{staff.building}}<br>
+        {{staffTypes}}<br> -->
+        <!-- {{staffTypeCodes[1]}}<br> -->
+
+        <!-- {{staffTypes}} -->
+
+        <h2>{{formType.toUpperCase()}}</h2>
+        <Form>
+            <!-- <input type="hidden" id="id"> -->
+            <!-- <input type="hidden" id="staffTypeId"> -->
+
+            <select name="staffType" id="staffType" [hidden]="isUpdateForm()" [(ngModel)]="staff.staffType">
+                <option *ngFor="let stafft of staffTypes" [value]="staffTypesEnum[stafft]"> {{stafft}} </option>
+            </select>
+
+            <div id="nameField">
+                <label for="name">name</label>
+                <input type="text" placeholder="name" id="name" [(ngModel)]="staff.name" required>
+                <!-- [(ngModel)]="a"   -->
+            </div>
+
+
+            <div id="sectionField" *ngIf="staff.staffType==1">
+                <label for="section">section</label>
+                <input type="text" placeholder="section" id="section" [(ngModel)]="staff.section">
+            </div>
+
+            <div id="buildingField" *ngIf="staff.staffType==2">
+                <label for="building">building</label>
+                <input type="text" placeholder="building" id="building" [(ngModel)]="staff.building">
+            </div>
+            
+            <div id="subjectHandledField" *ngIf="staff.staffType==3">
+                <label for="subjectHandled">subject handled</label>
+                <input type="text" placeholder="subject handled" id="subjectHandled" [(ngModel)]="staff.subjectHandled">
+            </div>
+
+            <input type="button" value="close" id="closeAddStaffBtn" (click)="handleCloseBtnClick()">
+            <input type="submit" value="submit" id="formSubmitBtn" (click)="handleSubmitBtnClick()">
+        </Form>
+    </div>
+</div>

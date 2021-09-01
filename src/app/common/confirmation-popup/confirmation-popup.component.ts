@@ -1,0 +1,20 @@
+import { Component, OnInit, Output ,EventEmitter} from '@angular/core';
+
+@Component({
+  selector: 'app-confirmation-popup',
+  templateUrl: './confirmation-popup.component.html',
+  styleUrls: ['./confirmation-popup.component.css']
+})
+export class ConfirmationPopupComponent implements OnInit {
+
+  @Output() hasConfirmed = new EventEmitter();
+  
+  constructor() { }
+
+  ngOnInit(): void {
+  }
+
+  setConfirmation(confirmation:boolean){
+      this.hasConfirmed.emit(confirmation);
+  }
+}

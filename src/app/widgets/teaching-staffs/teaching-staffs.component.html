@@ -1,0 +1,22 @@
+
+
+<div class="tableContainer">
+
+    <table id="myTable" border="1px" class="table">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>subjectHandled</th>
+            <th>-</th>
+
+        </tr>
+        <tr *ngFor="let staff of staffs">
+            <td>{{staff.id}} </td>
+            <td>{{staff.name}} </td>
+            <td>{{staff.subjectHandled}} </td>
+            <!-- <td><app-delete-staff-btn></app-delete-staff-btn> </td> -->
+            <td><button (click)="handleDeleteBtnClick()">Delete</button></td>
+        </tr>
+    </table>
+
+</div>

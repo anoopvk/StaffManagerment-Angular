@@ -1,0 +1,21 @@
+
+
+<div class="tableContainer">
+
+    <table id="myTable" border="1px" class="table">
+        <tr>
+            <th>id</th>
+            <th>name</th>
+            <th>section</th>
+            <th>-</th>
+
+        </tr>
+        <tr *ngFor="let staff of staffs">
+            <td>{{staff.id}} </td>
+            <td>{{staff.name}} </td>
+            <td>{{staff.section}}</td>
+            <td><button (click)="handleDeleteBtnClick()">Delete</button></td>
+        </tr>
+    </table>
+
+</div>
