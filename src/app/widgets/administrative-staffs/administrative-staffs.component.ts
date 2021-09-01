@@ -19,12 +19,16 @@ export class AdministrativeStaffsComponent extends TableBase implements OnInit {
 
   ngOnInit(): void {
     this.staffSelectionService.selectedStaffs = new Set();
-    this.staffService.getStaffsByType("AdministrativeStaff").subscribe(res => {
-      this.staffs = res;
-      console.log("data=", this.staffs)
+    this.getAdministrativeStaffs();
+    this.staffService.refreshStaff.subscribe(() => {
+      this.getAdministrativeStaffs();
     })
-  }
-  handleDeleteBtnClick() {
 
   }
+  getAdministrativeStaffs() {
+    this.staffService.getStaffsByType("AdministrativeStaff").subscribe(
+      res => { this.staffs = res },
+      error => { this.staffs = [] })
+  }
+
 }

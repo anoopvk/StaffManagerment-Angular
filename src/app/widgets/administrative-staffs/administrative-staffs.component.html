@@ -14,7 +14,9 @@
             <td>{{staff.id}} </td>
             <td>{{staff.name}} </td>
             <td>{{staff.section}}</td>
-            <td><button (click)="handleDeleteBtnClick()">Delete</button></td>
+            <!-- <td><button (click)="handleDeleteBtnClick()">Delete</button></td> -->
+            <td><button (click)="handleDeleteBtnClick(staff.id)">Delete</button></td>
+            <td><input type="checkbox" (click)="staffSelectionService.toggleSelected(staff.id)"></td>
         </tr>
     </table>
 

@@ -9,7 +9,6 @@
     
     <router-outlet></router-outlet>
 
-
     <app-content-text-bottom></app-content-text-bottom>
 
     <ng-container *ngIf="popupHandlerService.showAddStaffPopUp">
@@ -23,6 +22,8 @@
     <ng-container *ngIf="popupHandlerService.showDeleteConfirmationPopUp">
       <app-confirmation-popup (hasConfirmed)="handleConfirmation($event)"></app-confirmation-popup>
     </ng-container>
+
+    
 
 
     

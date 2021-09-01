@@ -1,3 +1,4 @@
+import { error } from '@angular/compiler/src/util';
 import { Component, OnInit, Output } from '@angular/core';
 import { TableBase } from 'src/app/models/base/tableBase';
 import { PopupHandlerService } from 'src/app/services/popup-handler.service';
@@ -14,19 +15,19 @@ import { staffTypes } from '../../models/staffTypes'
 })
 
 
-export class AllStaffsComponent  extends TableBase implements OnInit{
+export class AllStaffsComponent extends TableBase implements OnInit {
 
-  staffs: Staff[] =[];
+  staffs: Staff[] = [];
   staffTypeEnum = staffTypes;
   showDeleteConfirmationPopUp = false;
   // staffIdforDelete: number | undefined;
-  
-  constructor( staffService: StaffServiceService,popupHandlerService:PopupHandlerService,public staffSelectionService:StaffSelectionService) {
-    super(staffService,popupHandlerService,staffSelectionService);
+
+  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, public staffSelectionService: StaffSelectionService) {
+    super(staffService, popupHandlerService, staffSelectionService);
   }
-  
+
   ngOnInit(): void {
-    this.staffSelectionService.selectedStaffs=new Set()
+    this.staffSelectionService.selectedStaffs = new Set()
     this.getAllStaffs();
     this.staffService.refreshStaff.subscribe(() => {
       this.getAllStaffs();
@@ -34,21 +35,15 @@ export class AllStaffsComponent  extends TableBase implements OnInit{
   }
 
   getAllStaffs() {
-    this.staffService.getStaffsByType("").subscribe(res => {
-      // res.forEach(v=>{
-      //   this.staffs.push(new Staff())
-      // })
-      this.staffs=res;
-      
-      console.log("data=", this.staffs)
-      console.log(staffTypes)
-    })
+    this.staffService.getStaffsByType("").subscribe(
+      res => { this.staffs = res },
+      error => { this.staffs = [] })
   }
 
-  
- 
 
 
-  
+
+
+
 
 }

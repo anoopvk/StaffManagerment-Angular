@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { TableBase } from 'src/app/models/base/tableBase';
 import { Staff } from 'src/app/models/staff';
+import { PopupHandlerService } from 'src/app/services/popup-handler.service';
+import { StaffSelectionService } from 'src/app/services/staff-selection.service';
 import { StaffServiceService } from 'src/app/services/staff-service.service';
 
 @Component({
@@ -7,18 +10,25 @@ import { StaffServiceService } from 'src/app/services/staff-service.service';
   templateUrl: './teaching-staffs.component.html',
   styleUrls: ['./teaching-staffs.component.css']
 })
-export class TeachingStaffsComponent implements OnInit {
+export class TeachingStaffsComponent extends TableBase implements OnInit {
   staffs?:Staff[]|undefined;
-  constructor(private staffService: StaffServiceService) { }
+  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, staffSelectionService: StaffSelectionService) {
+    super(staffService, popupHandlerService, staffSelectionService); }
 
   ngOnInit(): void {
-    this.staffService.getStaffsByType("TeachingStaff").subscribe(res=>{
-      this.staffs=res;
-      console.log("data=",this.staffs)
+    this.staffSelectionService.selectedStaffs = new Set();
+    this.getTeachingStaffs();
+    this.staffService.refreshStaff.subscribe(() => {
+      this.getTeachingStaffs();
     })
+
   }
-  handleDeleteBtnClick(){
-    
+  getTeachingStaffs() {
+    this.staffService.getStaffsByType("TeachingStaff").subscribe(
+      res => { this.staffs = res },
+      error => { this.staffs = [] })
   }
+
+
 
 }

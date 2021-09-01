@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PopupHandlerService } from 'src/app/services/popup-handler.service';
 
 @Component({
   selector: 'app-content-text-bottom',
@@ -7,9 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ContentTextBottomComponent implements OnInit {
 
-  constructor() { }
+  constructor(public popupHandlerService: PopupHandlerService) { }
 
   ngOnInit(): void {
   }
-
+  handleDeleteSelectedBtnClick() {
+    console.log("handleDeleteAllBtnClick")
+    this.popupHandlerService.setDeleteSelected();
+    this.popupHandlerService.showDeleteConfirmationPopUp = true;
+  }
 }
