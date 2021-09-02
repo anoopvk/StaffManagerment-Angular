@@ -1,0 +1,8 @@
+span{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 700;
+    margin: 5px;
+}
+.active{
+    color: blue;
+}

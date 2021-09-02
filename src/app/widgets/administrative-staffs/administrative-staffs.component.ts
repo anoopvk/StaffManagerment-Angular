@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TableBase } from 'src/app/models/base/tableBase';
 import { Staff } from 'src/app/models/staff';
+import { PagingService } from 'src/app/services/paging.service';
 import { PopupHandlerService } from 'src/app/services/popup-handler.service';
 import { StaffSelectionService } from 'src/app/services/staff-selection.service';
 import { StaffServiceService } from 'src/app/services/staff-service.service';
@@ -13,7 +14,7 @@ import { StaffServiceService } from 'src/app/services/staff-service.service';
 export class AdministrativeStaffsComponent extends TableBase implements OnInit {
   staffs?: Staff[] | undefined;
 
-  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, staffSelectionService: StaffSelectionService) {
+  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, staffSelectionService: StaffSelectionService,public pagingService:PagingService) {
     super(staffService, popupHandlerService, staffSelectionService);
   }
 
@@ -27,7 +28,7 @@ export class AdministrativeStaffsComponent extends TableBase implements OnInit {
   }
   getAdministrativeStaffs() {
     this.staffService.getStaffsByType("AdministrativeStaff").subscribe(
-      res => { this.staffs = res },
+      res => { this.staffs = this.pagingService.paginateData(res) },
       error => { this.staffs = [] })
   }
 

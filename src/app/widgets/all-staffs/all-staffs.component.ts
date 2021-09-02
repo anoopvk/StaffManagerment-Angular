@@ -1,6 +1,7 @@
 import { error } from '@angular/compiler/src/util';
 import { Component, OnInit, Output } from '@angular/core';
 import { TableBase } from 'src/app/models/base/tableBase';
+import { PagingService } from 'src/app/services/paging.service';
 import { PopupHandlerService } from 'src/app/services/popup-handler.service';
 import { StaffSelectionService } from 'src/app/services/staff-selection.service';
 import { StaffServiceService } from 'src/app/services/staff-service.service';
@@ -22,8 +23,9 @@ export class AllStaffsComponent extends TableBase implements OnInit {
   showDeleteConfirmationPopUp = false;
   // staffIdforDelete: number | undefined;
 
-  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, public staffSelectionService: StaffSelectionService) {
+  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, public staffSelectionService: StaffSelectionService, public pagingService:PagingService) {
     super(staffService, popupHandlerService, staffSelectionService);
+
   }
 
   ngOnInit(): void {
@@ -32,11 +34,12 @@ export class AllStaffsComponent extends TableBase implements OnInit {
     this.staffService.refreshStaff.subscribe(() => {
       this.getAllStaffs();
     })
+    // console.log(this.staffs)
   }
 
   getAllStaffs() {
     this.staffService.getStaffsByType("").subscribe(
-      res => { this.staffs = res },
+      res => { this.staffs = this.pagingService.paginateData(res) },
       error => { this.staffs = [] })
   }
 

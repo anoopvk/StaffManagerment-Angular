@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Staff } from '../models/staff';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject } from 'rxjs';
-import {catchError} from 'rxjs/operators'
+import {catchError, filter} from 'rxjs/operators'
 import { error } from '@angular/compiler/src/util';
 
 @Injectable({

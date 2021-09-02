@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TableBase } from 'src/app/models/base/tableBase';
+import { PagingService } from 'src/app/services/paging.service';
 import { PopupHandlerService } from 'src/app/services/popup-handler.service';
 import { StaffSelectionService } from 'src/app/services/staff-selection.service';
 import { StaffServiceService } from 'src/app/services/staff-service.service';
@@ -11,11 +12,14 @@ import { StaffServiceService } from 'src/app/services/staff-service.service';
 })
 export class ContentTextComponent extends TableBase implements OnInit {
 
-  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, public staffSelectionService: StaffSelectionService) {
+  constructor(staffService: StaffServiceService, popupHandlerService: PopupHandlerService, public staffSelectionService: StaffSelectionService,public pagingService:PagingService) {
     super(staffService, popupHandlerService, staffSelectionService);
   }
 
   ngOnInit(): void {
   }
-
+  
+  refresh(){
+    this.staffService.refreshStaff.next()
+  }
 }

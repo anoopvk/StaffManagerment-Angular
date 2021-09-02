@@ -1,9 +1,13 @@
 <div style="float:right;">
-    <button (click)="handleDeleteSelectedBtnClick()">Delete Selected</button>
-  </div>
-  <div>
-    <span> currentPage: </span>
-    <select name="currentPage" id="currentPage">
-      <option value="1">1</option>
-    </select>
-  </div>
+  <button (click)="handleDeleteSelectedBtnClick()">Delete Selected</button>
+</div>
+
+<div>
+  <!-- <span> currentPage: </span> -->
+  <!-- <select name="currentPage" id="currentPage">
+    <option value="1">1</option>
+  </select> -->
+  <span *ngFor="let page of pages ">
+    <span [ngClass]="{'active':page==pagingService.currentPage}" (click)="setPage(page)">{{page}}</span>
+  </span>
+</div>
